@@ -9,27 +9,7 @@ export class AppService {
     constructor(private httpClient: HttpClient){
         this.endpoint = "http://"+window.location.hostname+":8200/api"
     }
-
-    /*get_vehiculos():Observable<any>{
-        return this.httpClient.get(this.endpoint+"/get_vehiculos", 
-        {responseType:'json'})
-    }
-
-    insert_vehiculo(load):Observable<any>{
-        return this.httpClient.post(this.endpoint+"/insert_vehiculo", load,
-        {responseType:'json'})
-    }
-
-    update_vehiculo(load):Observable<any>{
-        return this.httpClient.put(this.endpoint+"/update_vehiculo", load,
-        {responseType:'json'})
-    }
-
-   delete_vehiculo(load):Observable<any>{
-        return this.httpClient.delete(this.endpoint+"/delete_vehiculo", {params:load,
-        responseType:'json'});
-    }*/
-
+    
     login(payload):Observable<any>{
         return this.httpClient.post(this.endpoint + "/login", payload, {responseType: 'json'});
       }
@@ -37,5 +17,15 @@ export class AppService {
     set_session(token){
         localStorage.setItem("vehiculo", JSON.stringify(token));
       }
+    
+    insert_usuario(load):Observable<any>{
+        return this.httpClient.post(this.endpoint+"/insert_usuario", load,
+        {responseType:'json'})
+    }
+
+    get_usuarios():Observable<any>{
+        return this.httpClient.get(this.endpoint+"/get_usuarios", 
+        {responseType:'json'})
+    }
 
 }

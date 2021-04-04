@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.router';
 import { AppService } from './app.service';
+import {GetUsuariosComponent} from './views/get_usuarios/get_usuarios.component';
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './views/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    GetUsuariosComponent,
     LoginComponent 
   ],
   imports: [

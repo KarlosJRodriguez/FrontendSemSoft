@@ -55,7 +55,7 @@ export class LoginComponent implements OnDestroy {
             if (response) {
               //this.service.set_usuarioLogueado(this.login_data.username);
               this.service.set_session(response);
-              this.router.navigateByUrl('/listado_vehiculos');
+              this.router.navigateByUrl('/listado_usuario');
             } else {
               swal.fire({
                 title: 'Error interno del servidor',
