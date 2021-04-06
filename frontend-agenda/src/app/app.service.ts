@@ -10,6 +10,26 @@ export class AppService {
         this.endpoint = "http://"+window.location.hostname+":8200/api"
     }
     
+    get_agenda():Observable<any>{
+        return this.httpClient.get(this.endpoint+"/get_agenda", 
+        {responseType:'json'})
+    }
+
+    insert_agenda(load):Observable<any>{
+        return this.httpClient.post(this.endpoint+"/insert_agenda", load,
+        {responseType:'json'})
+    }
+
+    update_agenda(load):Observable<any>{
+        return this.httpClient.put(this.endpoint+"/update_agenda", load,
+        {responseType:'json'})
+    }
+
+   delete_agenda(load):Observable<any>{
+        return this.httpClient.delete(this.endpoint+"/delete_agenda", {params:load,
+        responseType:'json'});
+    }
+
     login(payload):Observable<any>{
         return this.httpClient.post(this.endpoint + "/login", payload, {responseType: 'json'});
       }

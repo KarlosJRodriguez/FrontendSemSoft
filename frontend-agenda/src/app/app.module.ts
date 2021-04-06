@@ -7,11 +7,13 @@ import { AppService } from './app.service';
 import {GetUsuariosComponent} from './views/get_usuarios/get_usuarios.component';
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './views/login/login.component';
+import { GetAgendaComponent } from './views/get_agenda/get_agenda.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetUsuariosComponent,
+    GetAgendaComponent,
     LoginComponent 
   ],
   imports: [

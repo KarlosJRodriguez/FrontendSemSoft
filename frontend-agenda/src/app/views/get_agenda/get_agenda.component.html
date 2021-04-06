@@ -1,0 +1,122 @@
+<div class="container">
+  <h3 class="text-primary">Agenda</h3>
+
+  <table class="table table-striped table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Actividad</th>
+        <th scope="col">Descripcion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let v of listado_agenda">
+        <td>{{v.idagenda}}</td>
+        <td>{{v.fecha}}</td>
+        <td>{{v.actividad}}</td>
+        <td>{{v.descripcion}}</td>
+        <td class="btn btn-primary btn-sm" 
+            data-toggle="modal" 
+            data-target="#EditModal"
+            (click)="getDatosAgendaForm(v)"> Modificar
+        </td>
+        <td>
+          <button class="btn btn-danger btn-sm"
+                  (click)="delete_agenda(v.idagenda)"
+                  >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="text-info" id="tituloModalLabel">Modificar Post</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label>Id:</label>
+            <input type="text" 
+                   class="form-control" 
+                   [(ngModel)]="Agenda.idagenda" 
+                   [ngModelOptions]="{standalone:true}"
+                   readonly="true"
+            >
+        
+            <label>Fecha:</label>
+            <input type="text" class="form-control" [(ngModel)]="Agenda.fecha" [ngModelOptions]="{standalone:true}">
+        
+            <label>Actividad:</label>
+            <input type="text" class="form-control" [(ngModel)]="Agenda.actividad" [ngModelOptions]="{standalone:true}">
+        
+            <label>Descripcion:</label>
+            <input type="text" class="form-control" [(ngModel)]="Agenda.descripcion" [ngModelOptions]="{standalone:true}">
+              
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="update_agenda()">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  Agregar un nuevo post
+  
+  <form ngNativeValidate #form>
+    <label>Id:</label>
+    <input type="text" 
+           class="form-control" 
+           pattern = "^[a-zA-Z]{3}[0-9]{4}"
+           [(ngModel)]="Agenda.idagenda" 
+           maxlength="15"
+           minlength="15"
+           required="true"
+           [ngModelOptions]="{standalone:true}">
+
+    <label>Fecha:</label>
+    <input type="text" 
+    class="form-control"
+    pattern = "^[a-zA-Z]{3}[0-9]{4}" 
+    maxlength="15"
+    required="true"
+    [(ngModel)]="Agenda.fecha" 
+    [ngModelOptions]="{standalone:true}">
+
+    <label>Actividad:</label>
+    <input type="text" 
+           class="form-control" 
+           pattern="^[a-zA-Z]+" 
+           maxlength="50"
+           required="true"
+           [(ngModel)]="Agenda.actividad" 
+           [ngModelOptions]="{standalone:true}">
+
+    <label>Descripcion:</label>
+    <input type="text" 
+    class="form-control"
+    pattern="^[a-zA-Z]+"  
+    maxlength="50"
+    required="true"
+    [(ngModel)]="Agenda.descripcion" 
+    [ngModelOptions]="{standalone:true}">
+
+    <button class="btn btn-primary" 
+            (click)="form.checkValidity() ? insert_agenda(): null">
+      Guardar
+    </button>
+
+  </form>
+
+
+</div>
