@@ -8,13 +8,18 @@ import {GetUsuariosComponent} from './views/get_usuarios/get_usuarios.component'
 import {FormsModule} from '@angular/forms';
 import { LoginComponent } from './views/login/login.component';
 import { GetAgendaComponent } from './views/get_agenda/get_agenda.component';
+import { UsuariosComponent } from './view/usuarios/usuarios.component';
+import { MenuComponent } from './view/menu/menu.component';
+import { LoginGuard } from './apploginguard';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetUsuariosComponent,
     GetAgendaComponent,
-    LoginComponent 
+    LoginComponent,
+    UsuariosComponent,
+    MenuComponent 
   ],
   imports: [
     BrowserModule,
@@ -24,6 +29,7 @@ import { GetAgendaComponent } from './views/get_agenda/get_agenda.component';
   ],
   providers: [
     AppService,
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })

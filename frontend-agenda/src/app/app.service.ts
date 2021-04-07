@@ -30,14 +30,6 @@ export class AppService {
         responseType:'json'});
     }
 
-    login(payload):Observable<any>{
-        return this.httpClient.post(this.endpoint + "/login", payload, {responseType: 'json'});
-      }
-    
-    set_session(token){
-        localStorage.setItem("vehiculo", JSON.stringify(token));
-      }
-    
     insert_usuario(load):Observable<any>{
         return this.httpClient.post(this.endpoint+"/insert_usuario", load,
         {responseType:'json'})
@@ -48,4 +40,29 @@ export class AppService {
         {responseType:'json'})
     }
 
+
+    login(payload):Observable<any>{
+        return this.httpClient.post(this.endpoint + "/login", payload, {responseType: 'json'});
+      }
+    
+    set_session(token){
+        localStorage.setItem("vehiculo", JSON.stringify(token));
+      }
+    
+    reset_session(){
+        localStorage.removeItem("agenda");
+    }
+    
+    get_session(){
+        if(localStorage.getItem("agenda") && JSON.parse(localStorage.getItem("agenda")).token){
+            return JSON.parse(localStorage.getItem("agenda"));
+        } else {
+            return false;
+        }
+        
+    }
 }
+
+
+
+  
